@@ -23,6 +23,7 @@ class ReminderCard extends StatelessWidget {
           backgroundColor: kReminderColors[reminder.colorIndex],
         ),
         title: Text(reminder.name),
+        subtitle: Text('Cada ${reminder.repeatEveryDays} día(s)'),
         trailing: IconButton(
           icon: const Icon(Icons.delete, color: Colors.red),
           onPressed: onDelete,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../controllers/reminder_controller.dart';
@@ -83,12 +84,16 @@ class _ReminderDialog extends StatefulWidget {
 
 class _ReminderDialogState extends State<_ReminderDialog> {
   late TextEditingController _nameController;
+  late TextEditingController _daysController;
   int _selectedColorIndex = 0;
 
   @override
   void initState() {
     super.initState();
     _nameController = TextEditingController(text: widget.reminder?.name ?? '');
+    _daysController = TextEditingController(
+      text: widget.reminder?.repeatEveryDays.toString() ?? '1',
+    );
     _selectedColorIndex = widget.reminder?.colorIndex ?? 0;
   }
 
@@ -113,6 +118,35 @@ class _ReminderDialogState extends State<_ReminderDialog> {
                 }
                 return null;
               },
+            ),
+            const SizedBox(height: 12),
+            Row(
+              children: [
+                const Text("Se cumple cada "),
+                SizedBox(
+                  width: 50, // ancho fijo para el número
+                  child: TextFormField(
+                    controller: _daysController,
+                    keyboardType: TextInputType.number,
+                    inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                    textAlign: TextAlign.center,
+                    decoration: const InputDecoration(
+                      isDense: true,
+                      contentPadding: EdgeInsets.symmetric(
+                        vertical: 8,
+                        horizontal: 4,
+                      ),
+                      border: OutlineInputBorder(),
+                    ),
+                    validator: (value) {
+                      final number = int.tryParse(value ?? '');
+                      if (number == null || number < 1) return '≥ 1';
+                      return null;
+                    },
+                  ),
+                ),
+                const Text(" día(s)"),
+              ],
             ),
             const SizedBox(height: 12),
             Wrap(
@@ -146,6 +180,7 @@ class _ReminderDialogState extends State<_ReminderDialog> {
                     widget.reminder?.id ??
                     DateTime.now().millisecondsSinceEpoch.toString(),
                 name: _nameController.text.trim(),
+                repeatEveryDays: int.parse(_daysController.text),
                 colorIndex: _selectedColorIndex,
               );
 
