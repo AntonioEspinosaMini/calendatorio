@@ -16,9 +16,9 @@ class InfoPage extends StatelessWidget {
           const Text(
             "¿Qué es Calendatorio?",
             style: TextStyle(
-              fontSize: 18,
+              fontSize: 20,
               fontWeight: FontWeight.bold,
-              color: Color(0xFF36C1A2),
+              color: Color(0xFF4C6A7D),
             ),
           ),
           const SizedBox(height: 12),
@@ -38,9 +38,9 @@ class InfoPage extends StatelessWidget {
           const Text(
             "¿Cómo funciona?",
             style: TextStyle(
-              fontSize: 18,
+              fontSize: 20,
               fontWeight: FontWeight.bold,
-              color: Color(0xFF36C1A2),
+              color: Color(0xFF4C6A7D),
             ),
           ),
           const SizedBox(height: 12),
@@ -51,16 +51,9 @@ class InfoPage extends StatelessWidget {
             children: const [
               _StepItem(number: "1", text: "Crea tu recordatorio"),
               SizedBox(height: 8),
-              _StepItem(
-                number: "2",
-                text: "Márcalo en el calendario los días que cumplas",
-              ),
+              _StepItem(number: "2", text: "Márcalo en el calendario"),
               SizedBox(height: 8),
-              _StepItem(
-                number: "3",
-                text:
-                    "O usa un widget para marcarlo rápidamente en el día en curso",
-              ),
+              _StepItem(number: "3", text: "Ó márcalo usando el widget"),
             ],
           ),
           const SizedBox(height: 24),

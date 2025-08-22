@@ -24,7 +24,7 @@ class SettingsPage extends StatelessWidget {
               MainAxisSize.min, // 🔹 Hace que el modal se ajuste al contenido
           children: [
             const Text(
-              "Planes / Freemium",
+              "Planes",
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
