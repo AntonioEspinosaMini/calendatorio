@@ -27,7 +27,7 @@ class RemindersController extends ChangeNotifier {
 
   Future<void> loadReminders() async {
     isLoading = true;
-    notifyListeners();
+    await Future.microtask(() => notifyListeners());
 
     reminders = await getAllReminders();
     isLoading = false;

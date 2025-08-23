@@ -53,7 +53,7 @@ class InfoPage extends StatelessWidget {
               SizedBox(height: 8),
               _StepItem(number: "2", text: "Márcalo en el calendario"),
               SizedBox(height: 8),
-              _StepItem(number: "3", text: "Ó márcalo usando el widget"),
+              _StepItem(number: "3", text: "Recibe notificaciones"),
             ],
           ),
           const SizedBox(height: 24),

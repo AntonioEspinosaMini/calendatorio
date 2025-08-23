@@ -16,6 +16,7 @@ class HiveReminderDataSource implements ReminderDataSource {
     await box.put(id, {
       'name': reminder.name,
       'colorIndex': reminder.colorIndex,
+      'repeatEveryDays': reminder.repeatEveryDays,
     });
   }
 
@@ -34,6 +35,7 @@ class HiveReminderDataSource implements ReminderDataSource {
         id: key,
         name: value['name'],
         colorIndex: value['colorIndex'],
+        repeatEveryDays: value['repeatEveryDays'],
       );
     }).toList();
   }
@@ -44,6 +46,7 @@ class HiveReminderDataSource implements ReminderDataSource {
     await box.put(reminder.id, {
       'name': reminder.name,
       'colorIndex': reminder.colorIndex,
+      'repeatEveryDays': reminder.repeatEveryDays,
     });
   }
 }
