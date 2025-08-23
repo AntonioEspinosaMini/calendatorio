@@ -27,6 +27,7 @@ import 'features/reminders/domain/usecases/get_all_reminders.dart';
 import 'features/reminders/domain/usecases/add_reminder.dart';
 import 'features/reminders/domain/usecases/update_reminder.dart';
 import 'features/reminders/domain/usecases/delete_reminder.dart';
+import 'services/reminder_notification_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -55,6 +56,10 @@ void main() async {
     dataSource: settingsDataSource,
   );
 
+  // Inicializa el servicio de notificaciones
+  final reminderNotificationService = ReminderNotificationService();
+  await reminderNotificationService.init();
+
   runApp(
     MultiProvider(
       providers: [
@@ -82,6 +87,7 @@ void main() async {
             markReminder: context.read<MarkReminder>(),
             unmarkReminder: context.read<UnmarkReminder>(),
             clearReminder: context.read<ClearReminderFromCalendar>(),
+            reminderNotificationService: reminderNotificationService,
           ),
         ),
         ChangeNotifierProvider(

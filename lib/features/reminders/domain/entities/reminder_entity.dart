@@ -6,12 +6,14 @@ class ReminderEntity {
   final String name;
   final int colorIndex; // índice en una lista predefinida de colores (0-4)
   final int repeatEveryDays;
+  final int? notificationId;
 
   const ReminderEntity({
     required this.id,
     required this.name,
     required this.colorIndex,
     this.repeatEveryDays = 1,
+    this.notificationId,
   });
 
   ReminderEntity copyWith({
@@ -19,18 +21,20 @@ class ReminderEntity {
     String? name,
     int? colorIndex,
     int? repeatEveryDays,
+    int? notificationId,
   }) {
     return ReminderEntity(
       id: id ?? this.id,
       name: name ?? this.name,
       colorIndex: colorIndex ?? this.colorIndex,
       repeatEveryDays: repeatEveryDays ?? this.repeatEveryDays,
+      notificationId: notificationId ?? this.notificationId,
     );
   }
 
   @override
   String toString() =>
-      'ReminderEntity(id: $id, name: $name, colorIndex: $colorIndex, repeatEveryDays: $repeatEveryDays)';
+      'ReminderEntity(id: $id, name: $name, colorIndex: $colorIndex, repeatEveryDays: $repeatEveryDays, notificationId: $notificationId)';
 
   @override
   bool operator ==(Object other) =>
@@ -40,12 +44,14 @@ class ReminderEntity {
           id == other.id &&
           name == other.name &&
           colorIndex == other.colorIndex &&
-          repeatEveryDays == other.repeatEveryDays;
+          repeatEveryDays == other.repeatEveryDays &&
+          notificationId == other.notificationId;
 
   @override
   int get hashCode =>
       id.hashCode ^
       name.hashCode ^
       colorIndex.hashCode ^
-      repeatEveryDays.hashCode;
+      repeatEveryDays.hashCode ^
+      notificationId.hashCode;
 }
